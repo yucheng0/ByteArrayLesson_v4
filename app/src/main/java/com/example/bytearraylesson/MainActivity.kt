@@ -3,8 +3,8 @@ package com.example.bytearraylesson
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.example.bytearraylesson.Parser.ParserKeepAliveWithCounter
-import com.example.bytearraylesson.Send.SendKeepAliveWithCounter
+import com.example.bytearraylesson.Parser.ResponseSendDataToDeviceHasCientCs
+import com.example.bytearraylesson.Send.SendDataToDevice
 import kotlinx.android.synthetic.main.activity_main.*
 
 val TAG = "myTag"
@@ -20,38 +20,18 @@ class MainActivity : AppCompatActivity() {
         //       tcpWifiCommand.tcpWifiReceiverModeWifiParameter()
 
         //     updatData(tcpWifiCommand)
-//        tcpWifiCommand.tcpWifiReceiverMode5()
-//Receiver - mode1:
-        /*       val parserConnectionStatus = ParserConnectionStatus()
-               val r = parserConnectionStatus.tcpWifiReceiverParserCheck(9)  //之後要Data
-               Log.d(TAG, "基本檢查結果r: $r")
-               //只能說資料在rDataByteArray內, 而且55是第1個出現的去直接取出值來
-       //--------------reset
 
-               val parserResetHasClientCS = ParserResetHasClientCS()
-               val r1 = parserResetHasClientCS.tcpWifiReceiverParserCheck(8,0xFe)  //之後要Data
-               Log.d(TAG, "基本檢查結果r1: $r1") */
+//send
+
+       var s = SendDataToDevice()
+        s.sendToDevice()           //得到cs = 144
+       val  r = ResponseSendDataToDeviceHasCientCs()
+       val re = r.receiveFromDevice(8)
+        Log.d(TAG, "re: $re ")
+
 
 // —------ keep alive
 
-      val sendKeepAliveWithCounter = SendKeepAliveWithCounter()  //先送1個
-        sendKeepAliveWithCounter.send()
-    // 再來讀
-        val parserKeepAliveWithCounter = ParserKeepAliveWithCounter()
-        val r1 = parserKeepAliveWithCounter.recevieFromDevice(9)  //之後要Data
-        Log.d(TAG, "基本檢查結果r1: $r1")
-
-// —----- wifi parameter
-/*        val parserWifiParameterResponse = ParserWifiParameterResponse()
-        val r1 = parserWifiParameterResponse.tcpWifiReceiverParserCheck(118)  //之後要Data
-        Log.d(TAG, "基本檢查結果r1: $r1")
-    }  */
-
-// Respose client send data
-
-/*    val parserResponseClientSendDataWithClientCs = ParserResponseClientSendDataWithClientCs()
-    val r2 = parserResponseClientSendDataWithClientCs.tcpWifiReceiverParserCheck(8,0x90)  //之後要Data
-    Log.d(TAG, "基本檢查結果r2: $r2") */
 
  /*       val sendKeepAliveWithCounter = SendKeepAliveWithCounter()
         sendKeepAliveWithCounter.send()  */

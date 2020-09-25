@@ -2,7 +2,7 @@ package com.example.bytearraylesson.Send
 
 import android.util.Log
 
-class SendDataToDevice {
+open class SendDataToDevice {
     var commandHead = 0x55            //固定
     var protocol = 0xFE               //固定
     var protocolLength = 0x71
@@ -147,9 +147,12 @@ class SendDataToDevice {
         serialNumber.add(0x37)
     }
 
+    companion object {
+        var clientCs = 0
+    }
 
 
-    fun send() {             //當你的資料備好時, 我只負責送不負責計算？ cs是否例外
+    fun sendToDevice() {             //當你的資料備好時, 我只負責送不負責計算？ cs是否例外
         val dataIntArray = ArrayList<Int>()
         dataIntArray.add(commandHead)
         dataIntArray.add(protocol)
@@ -228,6 +231,7 @@ class SendDataToDevice {
         Log.d(com.example.bytearraylesson.TAG, "css: ${css}")                           // 16f
         var cs1 = css.subSequence((css.length) - 2, (css.length))   //6f 取後面2位數
         cs = cs1.toString().toInt(16)
+        clientCs = cs                      // 存起來
         Log.d(com.example.bytearraylesson.TAG, "果cs: ${cs}")
 
         dataIntArray.add(cs)

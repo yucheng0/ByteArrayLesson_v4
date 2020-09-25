@@ -3,7 +3,7 @@ package com.example.bytearraylesson.Parser
 import android.util.Log
 import com.example.bytearraylesson.TAG
 
-class ParserWifiParameterResponse {
+class ResponseSendDataRequest {
     var commandHead = 0x55            //固定
     var protocol = 0xFE               //固定
     var protocolLength = 0x71
