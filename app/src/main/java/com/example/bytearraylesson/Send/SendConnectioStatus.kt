@@ -14,7 +14,7 @@ class SendConnectioStatus{
         b1.set(8,0x90-256)
 
     }
-    fun sendConnectStatus():ByteArray {
+    fun send():ByteArray {
         return b1               // 把初值送回去
     }
 }

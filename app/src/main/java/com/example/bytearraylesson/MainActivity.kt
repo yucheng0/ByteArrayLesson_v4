@@ -4,8 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.example.bytearraylesson.Parser.ParserKeepAliveWithCounter
-import com.example.bytearraylesson.Parser.ParserResponseClientSendDataWithClientCs
-import com.example.bytearraylesson.Parser.ParserWifiParameterResponse
+import com.example.bytearraylesson.Send.SendKeepAliveWithCounter
 import kotlinx.android.synthetic.main.activity_main.*
 
 val TAG = "myTag"
@@ -34,10 +33,13 @@ class MainActivity : AppCompatActivity() {
                Log.d(TAG, "基本檢查結果r1: $r1") */
 
 // —------ keep alive
-/*        val parserKeepAliveWithCounter = ParserKeepAliveWithCounter()
-        val r1 = parserKeepAliveWithCounter.tcpWifiReceiverParserCheck(9,0)  //之後要Data
+
+      val sendKeepAliveWithCounter = SendKeepAliveWithCounter()  //先送1個
+        sendKeepAliveWithCounter.send()
+    // 再來讀
+        val parserKeepAliveWithCounter = ParserKeepAliveWithCounter()
+        val r1 = parserKeepAliveWithCounter.recevieFromDevice(9)  //之後要Data
         Log.d(TAG, "基本檢查結果r1: $r1")
-    } */
 
 // —----- wifi parameter
 /*        val parserWifiParameterResponse = ParserWifiParameterResponse()
@@ -47,10 +49,17 @@ class MainActivity : AppCompatActivity() {
 
 // Respose client send data
 
-    val parserResponseClientSendDataWithClientCs = ParserResponseClientSendDataWithClientCs()
+/*    val parserResponseClientSendDataWithClientCs = ParserResponseClientSendDataWithClientCs()
     val r2 = parserResponseClientSendDataWithClientCs.tcpWifiReceiverParserCheck(8,0x90)  //之後要Data
-    Log.d(TAG, "基本檢查結果r2: $r2")
+    Log.d(TAG, "基本檢查結果r2: $r2") */
+
+ /*       val sendKeepAliveWithCounter = SendKeepAliveWithCounter()
+        sendKeepAliveWithCounter.send()  */
+/*        val sendDataToDevice = SendDataToDevice()
+        sendDataToDevice.send() */
+
 }
+
 
 
 
